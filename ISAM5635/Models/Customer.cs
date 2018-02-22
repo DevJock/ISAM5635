@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ISAM5635.Models
 {
-    public class Customer
+    public partial class Customer
     {
-        string UserName { get; set; }
-        string FirstName { get; set; }
-        string LastName { get; set; }
-        DateTime DateOBirth { get; set; }
-        string License { get; set; }
-
-        public Customer(string _userName, string _firstName, string _lastName, DateTime _dateOfBirth, string _license)
+        public Customer()
         {
-            UserName = _userName;
-            FirstName = _firstName;
-            LastName = _lastName;
-            DateOBirth = _dateOfBirth;
-            License = _license;
+            CarRental = new HashSet<CarRental>();
         }
+
+        public string Username { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public DateTime Dob { get; set; }
+        public string License { get; set; }
+
+        public ICollection<CarRental> CarRental { get; set; }
     }
 }

@@ -12,16 +12,31 @@ namespace ISAM5635.Controllers
     [Route("api/")]
     public class APIController : Controller
     {
-        [Route("Cars")]
-        [HttpGet]
-        public List<Car> Get()
+        [Route("fleet")]
+        [HttpPost]
+        public List<Car> GetAvailableCars()
         {
-            List<Car> cars = new List<Car>();
-            cars.Add(new Car(0, "Brand1", "Model1", "1994", "Red", Car.State.Available, Car.VehicleClass.SUV));
-            cars.Add(new Car(2, "Brand2", "Model2", "2010", "Black", Car.State.Not_Available, Car.VehicleClass.Full_Size));
-            cars.Add(new Car(3, "Brand1", "Model2", "2000", "Red", Car.State.Available, Car.VehicleClass.Compact));
-            cars.Add(new Car(4, "Brand1", "Model1", "1998", "Yellow", Car.State.Available, Car.VehicleClass.Van));
-            return cars;
+            return null;
         }
+
+
+        [Route("fleet/{carnum}")]
+        [HttpPost]
+        public string GetCar(int carnum)
+        {
+            return carnum.ToString();
+        }
+
+        [Route("fleet/add{car}")]
+        [HttpPost]
+        public string AddCar(string car)
+        {
+            return "Success";
+        }
+
+
+
+
+
     }
 }

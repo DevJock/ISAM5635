@@ -1,47 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ISAM5635.Models
 {
-    public class Car
+    public partial class Car
     {
-        public enum State
+        public Car()
         {
-            Available,
-            Not_Available
+            CarRental = new HashSet<CarRental>();
         }
 
-        public enum VehicleClass
-        {
-            Compact,
-            Mid_Size,
-            Full_Size,
-            Van,
-            SUV
-        }
-
-        public int CarNum { get; set; }
+        public int CarId { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
-        public string Year { get; set; }
+        public int ProductionYear { get; set; }
         public string Color { get; set; }
-        public State Status { get; set; }
-        public VehicleClass Class { get; set; }
+        public string Status { get; set; }
+        public string CategoryType { get; set; }
+
+        public Category CategoryTypeNavigation { get; set; }
+        public ICollection<CarRental> CarRental { get; set; }
 
 
-
-        public Car(int _carNum, string _brand,string _model,string _year,string _color, State _status, VehicleClass _class)
+        public List<Car> AllCars()
         {
-            CarNum = _carNum;
-            Brand = _brand;
-            Model = _model;
-            Year = _year;
-            Color = _color;
-            Status = _status;
-            Class = _class;
+            return null;
         }
+
+
 
     }
 }

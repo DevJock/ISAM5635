@@ -1,31 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ISAM5635.Models
 {
-    public class CarRental
+    public partial class CarRental
     {
-        public int RentalID { get; set; }
-        public string UserName { get; set; }
-        public Location RentalLocation { get; set; }
-        public Location PickUp { get; set; }
-        public Location DropOff { get; set; }
-        public DateTime BookingStart { get; set; }
-        public DateTime BookingEnd { get; set; }
+        public int RentalId { get; set; }
+        public int CarId { get; set; }
+        public string Username { get; set; }
+        public string LocationName { get; set; }
+        public string Pickup { get; set; }
+        public string Dropoff { get; set; }
+        public DateTime BookingStartdate { get; set; }
+        public DateTime BookingEnddate { get; set; }
 
-
-        public CarRental(int _rentalID, string _userName,Location _rentalLocation, Location _pickUp, Location _dropOff, DateTime _bookingStart, DateTime _bookingEnd)
-        {
-            RentalID = _rentalID;
-            UserName = _userName;
-            RentalLocation = _rentalLocation;
-            PickUp = _pickUp;
-            DropOff = _dropOff;
-            BookingStart = _bookingStart;
-            BookingEnd = _bookingEnd;
-        }
-
+        public Car Car { get; set; }
+        public Location LocationNameNavigation { get; set; }
+        public Customer UsernameNavigation { get; set; }
     }
 }
