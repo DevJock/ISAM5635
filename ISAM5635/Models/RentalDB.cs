@@ -12,13 +12,17 @@ namespace ISAM5635.Models
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Location> Location { get; set; }
 
-
+        /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\MEGA\MIS\SAD\ISAM5635\ISAM5635\online_res.mdf;Integrated Security=True;Connect Timeout=30");
             }
+        }*/
+
+        public RentalDB(DbContextOptions<RentalDB> options) :base(options)
+        {
         }
 
 

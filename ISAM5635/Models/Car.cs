@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace ISAM5635.Models
 {
@@ -20,14 +21,5 @@ namespace ISAM5635.Models
 
         public Category CategoryTypeNavigation { get; set; }
         public ICollection<CarRental> CarRental { get; set; }
-
-
-        public List<Car> AllCars()
-        {
-            return null;
-        }
-
-
-
     }
 }

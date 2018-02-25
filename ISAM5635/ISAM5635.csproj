@@ -8,6 +8,7 @@
     <Compile Remove="Models\CarRental_O.cs" />
     <Compile Remove="Models\Car_O.cs" />
     <Compile Remove="Models\Customer_O.cs" />
+    <Compile Remove="Models\DBC.cs" />
     <Compile Remove="Models\Location_O.cs" />
   </ItemGroup>
 

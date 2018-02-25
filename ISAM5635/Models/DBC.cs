@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace ISAM5635.Models
 {
-    public partial class D__MEGA_MIS_SAD_ISAM5635_ISAM5635_ONLINE_RES_MDFContext : DbContext
+    public partial class DBC : DbContext
     {
         public virtual DbSet<Car> Car { get; set; }
         public virtual DbSet<CarRental> CarRental { get; set; }
@@ -12,13 +12,16 @@ namespace ISAM5635.Models
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Location> Location { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\MEGA\MIS\SAD\ISAM5635\ISAM5635\online_res.mdf;Integrated Security=True;Connect Timeout=30");
             }
+        }*/
+        public DBC(DbContextOptions<DBC> options):base(options)
+        {
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

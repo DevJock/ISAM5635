@@ -12,31 +12,53 @@ namespace ISAM5635.Controllers
     [Route("api/")]
     public class APIController : Controller
     {
-        [Route("fleet")]
-        [HttpPost]
-        public List<Car> GetAvailableCars()
+
+        private RentalDB _context;
+        public APIController(RentalDB context)
         {
-            return null;
+            _context = context;
         }
 
 
-        [Route("fleet/{carnum}")]
+        [Route("fleet/")]
         [HttpPost]
-        public string GetCar(int carnum)
+        public IActionResult GetAvailableCars()
         {
-            return carnum.ToString();
+            return Json(_context.Car.ToList());
         }
 
-        [Route("fleet/add{car}")]
+        [Route("fleet/car/")]
         [HttpPost]
-        public string AddCar(string car)
+        public IActionResult CarDetails()
         {
-            return "Success";
+            int id = Convert.ToInt32(Request.Form["CarId"]);
+            var item = (from Car c in _context.Car
+                        where c.CarId == id
+                        select c).FirstOrDefault();
+            return Json(item);
+        }
+
+        [Route("fleet/add/")]
+        [HttpPost]
+        public IActionResult AddCar([FromBody] Car car)
+        {
+            _context.Add(car);
+            _context.SaveChanges();
+            return Json(car);
         }
 
 
-
-
-
+        [Route("fleet/update/")]
+        [HttpPost]
+        public IActionResult UpdateCar([FromBody] Car car)
+        {
+            var item = (from Car c in _context.Car
+                        where c.CarId == car.CarId
+                        select c).FirstOrDefault();
+            _context.Car.Remove(item);
+            _context.Add(car);
+            _context.SaveChanges();
+            return Json(car);
+        }
     }
 }
