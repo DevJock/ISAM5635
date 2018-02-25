@@ -56,9 +56,56 @@ namespace ISAM5635.Controllers
                         where c.CarId == car.CarId
                         select c).FirstOrDefault();
             _context.Car.Remove(item);
-            _context.Add(car);
+            _context.Car.Add(car);
             _context.SaveChanges();
             return Json(car);
+        }
+
+        [Route("fleet/booking/")]
+        [HttpPost]
+        public IActionResult BookingById()
+        {
+            var bookingID = Convert.ToInt32(Request.Form[""]);
+            var item = (from CarRental cr in _context.CarRental
+                         where cr.RentalId == bookingID
+                         select cr).ToList();
+            return Json(item);
+        }
+
+        [Route("fleet/booking/")]
+        [HttpPost]
+        public IActionResult ModifyBooking([FromBody] CarRental carRental)
+        {
+            var item = (from CarRental c in _context.CarRental
+                        where c.RentalId == carRental.RentalId
+                        select c).FirstOrDefault();
+            _context.CarRental.Remove(item);
+            _context.CarRental.Add(carRental);
+            _context.SaveChanges();
+            return Json(carRental);
+        }
+
+        [Route("fleet/customer/")]
+        [HttpPost]
+        public IActionResult customerByUserId()
+        {
+            var userName = Request.Form["userName"];
+            var item = (from Customer c in _context.Customer
+                        where c.Username == userName
+                        select c).FirstOrDefault();
+            return Json(item);
+        }
+
+
+        [Route("fleet/locations/")]
+        [HttpPost]
+        public IActionResult CarsAtLocation()
+        {
+            var location = Request.Form[""];
+            var items = (from CarRental cr in _context.CarRental
+                        where cr.LocationName == location
+                        select cr).ToList();
+            return Json(items);
         }
     }
 }
