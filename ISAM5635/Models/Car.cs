@@ -21,5 +21,11 @@ namespace ISAM5635.Models
 
         public Category CategoryTypeNavigation { get; set; }
         public ICollection<CarRental> CarRental { get; set; }
+
+        public override string ToString()
+        {
+            return $"{CarId}, {Brand},{ProductionYear},{Color},{Status},{CategoryType}";
+        }
+
     }
 }

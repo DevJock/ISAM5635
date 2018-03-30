@@ -10,9 +10,17 @@ namespace ISAM5635.Controllers
 {
     public class HomeController : Controller
     {
+
+        private RentalDB _context;
+        public HomeController(RentalDB context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            Car[] cars = _context.Car.ToArray();
+            return View(cars);
         }
 
         public IActionResult About()
