@@ -19,8 +19,71 @@ namespace ISAM5635.Controllers
 
         public IActionResult Index()
         {
-            Car[] cars = _context.Car.ToArray();
+            var cars = from c in _context.Car select c;
             return View(cars);
+        }
+
+        [HttpGet]
+        public IActionResult AddCar()
+        {
+      
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddCar(Car cars)
+        {
+            _context.Add(cars);
+            _context.SaveChanges();
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Details(int carId)
+        {
+            var item = (from Car c in _context.Car
+                        where c.CarId == carId
+                        select c).FirstOrDefault();
+            
+            return View(item);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int carId)
+        {
+            var item = (from Car c in _context.Car
+                        where c.CarId == carId
+                        select c).FirstOrDefault();
+
+            return View(item);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Car cars)
+        {
+            //_context.Add(cars);
+            _context.Update(cars);
+            _context.SaveChanges();
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int carId)
+        {
+            var item = (from Car c in _context.Car
+                        where c.CarId == carId
+                        select c).FirstOrDefault();
+
+            return View(item);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Car cars)
+        {
+            //_context.Add(cars);
+            _context.Remove(cars);
+            _context.SaveChanges();
+            return View();
         }
 
         public IActionResult About()
