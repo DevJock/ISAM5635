@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model ISAM5635.Models.Car
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+   
+    <div>
+
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Brand)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Brand)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Model)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Model)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductionYear)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductionYear)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Color)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Color)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CategoryTypeNavigation)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CategoryTypeNavigation.CategoryType)
+                </dd>
+            </dl>
+
+        </div>
+        <div>
+               @RenderBody()
+        </div>
+        
+    </div>
+</body>
+</html>

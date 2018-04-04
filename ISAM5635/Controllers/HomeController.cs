@@ -23,6 +23,13 @@ namespace ISAM5635.Controllers
             return View(cars);
         }
 
+        public IActionResult RentCars()
+        {
+            var cars = from c in _context.CarRental select c;
+            return View(cars);
+        }
+
+
         [HttpGet]
         public IActionResult AddCar()
         {

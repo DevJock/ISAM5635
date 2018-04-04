@@ -1,66 +1,17 @@
 ﻿@model ISAM5635.Models.Car
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout3.cshtml";
 }
 
-<!DOCTYPE html>
+<title>DELETE</title>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
-</head>
-<body>
-
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Car</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Brand)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Model)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Model)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductionYear)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProductionYear)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryTypeNavigation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CategoryTypeNavigation.CategoryType)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
+    <p> are you sure you want to delete this car Information???</p>
+       <form asp-action="Delete">
         <input type="hidden" asp-for="CarId" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Delete"  asp-action="Index" class="btn btn-danger" /> |
+        <input type="submit"  class="btn btn-primary" value="Back" asp-action="Index"/>
     </form>
 </div>
-</body>
-</html>
+
