@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<ISAM5635.Models.Car>
-
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,65 +9,50 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <style type="text/css">
+        .grid_card {
+            margin: 50px;
+            padding: 10px;
+            float: left;
+            display: inline-block;
+            border: 2px solid black;
+        }
+
+        .center {
+            margin: 25% auto;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-<p>
-    <a asp-controller="Home" asp-action="AddCar">Add new Car</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Brand)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Model)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductionYear)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Color)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Status)
-                </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryTypeNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductionYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryTypeNavigation.CategoryType)
-            </td>
-            <td>
-                <a asp-controller="Home" asp-action="Edit" asp-route-carId="@item.CarId">Edit</a> |
-                <a asp-controller="Home" asp-action="Details"asp-route-carId="@item.CarId" >Details</a> |
-                <a asp-controller="Home" asp-action="Delete" asp-route-carId="@item.CarId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-3">
+                <div class="card border-dark grid_card text-left" style="max-width:250px;height:300px">
+
+                    <div class="card-header" style="border: 1px solid black; padding:2px; margin: 1px;">@Html.DisplayFor(modelItem => item.Brand)</div>
+
+                    <div class="card-body text-dark text-center center">
+
+                        <h3 class="card-title" style="color:@Html.DisplayFor(modelItem => item.Color)">@Html.DisplayFor(modelItem => item.Model)</h3>
+
+                        @Html.DisplayFor(modelItem => item.ProductionYear)
+                        <br /><br />
+
+                        <a asp-controller="Home" asp-action="Details" asp-route-carId="@item.CarId" class="btn btn-primary">Details</a>
+                        <a asp-controller="Home" asp-action="Edit" asp-route-carId="@item.CarId" class="btn btn-default">Edit</a>
+
+                        <a asp-controller="Home" asp-action="Delete" asp-route-carId="@item.CarId" class="btn btn-danger">Delete</a>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+
+    
 
 
 </body>
