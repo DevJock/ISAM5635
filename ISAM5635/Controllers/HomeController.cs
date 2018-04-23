@@ -19,7 +19,7 @@ namespace ISAM5635.Controllers
 
         public IActionResult Index()
         {
-            var cars = from c in _context.Car select c;
+            var cars = from c in _context.Car  select c;
             return View(cars);
         }
 
@@ -71,7 +71,7 @@ namespace ISAM5635.Controllers
             //_context.Add(cars);
             _context.Update(cars);
             _context.SaveChanges();
-            return View();
+            return View("Index");
         }
 
         [HttpGet]

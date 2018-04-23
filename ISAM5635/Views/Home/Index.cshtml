@@ -16,6 +16,9 @@
             float: left;
             display: inline-block;
             border: 2px solid black;
+            width: 250px;
+            height: 250px;
+            background-color: darkgray;
         }
 
         .center {
@@ -28,14 +31,14 @@
     <div class="row">
         @foreach (var item in Model)
         {
-            <div class="col-sm-3">
-                <div class="card border-dark grid_card text-left" style="max-width:250px;height:300px">
+            <div class="col-md-4 grid_card">
+                <div class="card border-dark text-left">
 
                     <div class="card-header" style="border: 1px solid black; padding:2px; margin: 1px;">@Html.DisplayFor(modelItem => item.Brand)</div>
 
                     <div class="card-body text-dark text-center center">
 
-                        <h3 class="card-title" style="color:@Html.DisplayFor(modelItem => item.Color)">@Html.DisplayFor(modelItem => item.Model)</h3>
+                        <h3 class="card-title" style="color:@Html.DisplayFor(modelItem => item.Color); max-height:200px;">@Html.DisplayFor(modelItem => item.Model)</h3>
 
                         @Html.DisplayFor(modelItem => item.ProductionYear)
                         <br /><br />
